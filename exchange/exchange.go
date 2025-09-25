@@ -41,8 +41,8 @@ func (e *Exchange) Open(ctx context.Context, dataReader *bufio.Reader) error {
 				return readErr
 			}
 			if strings.HasPrefix(readData, "Q|") {
-				prepareData := strings.TrimSuffix(readData, "\r\n")
-				prepareData = strings.TrimSuffix(prepareData, "\n")
+				prepareData := strings.TrimSuffix(readData, "\n")
+				prepareData = strings.TrimSuffix(prepareData, "\r")
 				e.addData(newData(prepareData))
 			}
 		}
